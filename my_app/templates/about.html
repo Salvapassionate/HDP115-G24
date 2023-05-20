@@ -1,0 +1,40 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Acerca de la empresa</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="welcome-about">
+        <div>
+            <p class="bienvenida">Bienvenido</p>
+        </div>
+        <div class="navigation">
+            <a href="{% url 'index' %}">Inicio</a>
+            <a href="{% url 'blog' %}">Blog</a>
+            <a href="{% url 'about' %}">Acerca de la empresa</a>
+            <a href="{% url 'contact' %}">Contacto</a>
+        </div>
+    </div>
+    <div class="empresa-info">
+        <div class="mission-container">
+            <p class="bienvenida"> Acerca de la empresa</p>
+            <p>Informacion acerca  de la empresa.</p>
+            <img src="{% static 'img/grupo.jpg' %}" alt="Imagen">
+        </div>
+        <!-- Resto del contenido -->
+        <div class="mission-container">
+                <h2>Servicio y Testimonio</h2>
+            <div class="mission-container">
+                <p class="bienvenida">Servicio</p>
+            </div>
+            <div class="testimonio-info">
+                <p class="bienvenida">Testimonio</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

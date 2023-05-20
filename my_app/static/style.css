@@ -1,0 +1,108 @@
+/* Estilos para pagina Inicio*/
+.welcome-navegation{
+    justify-content:space-between;
+    display: flex;
+}
+.bienvenida{
+    padding-top: 10px;
+    right: 20px;
+    font-size: 24px;
+    color: #333;
+}
+/* Estilos de la imagen */
+img {
+    width: 100%;
+    width: 30%;
+    height: 30%;
+    margin: 20px auto;
+}
+/* Estilos del contenedor de la misión */
+.mission-container {
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
+}
+/* Estilos de los botones de navegación */
+.navigation {
+    text-align: left;
+}
+.navigation a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #333;
+}
+.mision-estadistica{
+    justify-content:space-between;
+    display: flex;
+}
+/* Estilos de la imagen en pantalla completa */
+.fullscreen-image {
+    width: 100%;
+    height: auto;
+}
+/* Estilos del contenedor de datos, gráfica de barras y gráfica de pastel */
+.data-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+/* Estilos de la tabla */
+table {
+    width: 60%;
+    max-width: 800px;
+}
+/* Estilos de la gráfica de barras */
+.bar-chart {
+    width: 30%;
+    max-width: 400px;
+    height: 300px;
+}
+/* Estilos de la gráfica de pastel */
+.pie-chart {
+    width: 30%;
+    max-width: 400px;
+    height: 300px;
+}
+/*Estilos para blog*/
+.blog-info{
+    justify-content: right;
+    display: flex;
+}
+.welcome-blog{
+    justify-content:space-between;;
+    display: flex;
+}
+.consejos-container {
+    width: 100%;
+    max-width: 600px;
+    text-align: left;
+    padding-top: 10%;
+}
+/*Estilos para acerca de la empresa*/
+.empresa-info{
+    justify-content:right;
+    display: flex;
+}
+.welcome-about{
+    justify-content:space-between;
+    display: flex;
+}
+.testimonio-info{
+    justify-content:right;
+    display: flex;
+    
+}
+/*Estilos para contacto*/
+.ubicacion-info{
+    justify-content: right;
+    display: flex;
+}
+.welcome-contact{
+    justify-content:space-between;
+    display: flex;
+}
+
+
+
+

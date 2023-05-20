@@ -1,0 +1,24 @@
+Crear sitio web usando Django version 1.11.5 y Python verion 2.7.5 en Ide Visual Studio Code version 1.71
+
+Herramientas a usar :
+html,css, python , django y otras herramientas que sea necesario.
+ 
+Estructura del sitio web de una sola pagina bien profesional
+con html y css 
+
+1.Texto de Bienvenida el la pagina principal en la parte superior derecho en la misma pagina dandole estilo y ajustando con css y html
+2.Una imagen  que presente una debajo del texto bienvenido en contenedor en la misma pagina dandole estilo y ajustando con css y html
+3.Un contenedor de campo de texto que contiene mision debajo del contenedor de la imagen en la misma pagina dandole estilo y ajustando con css y html
+4.Botones de navagadores con tres botones de Blog, Acerca de la empresa y Contacto En la parte superior izquierdo.
+Cada boton al dar click debe llevar a una nueva pagina con imagen
+con pantalla completa , se debe navegar entre los botones y poder
+regresar a la pagina principal de Bienvenida donde esta los demas contenedores en la misma pagina dandole estilo y ajustando con css y html
+5.Contenedor que contiene  cuadricula de datos en tabla, cuadro de grafica
+de barra, cuadro de grafica de pastel, ese contenedor debe estar ubicado
+debajo de los botones de navegador y al lado de los contenedor
+de campo de texto en la misma pagina dandole estilo y ajustando con css y html
+
+Se debe	tomar en cuenta	que ya se instalo django, python , entorno virtual
+el vistual studio code, se  creo el proyecto django llamado mi_project
+, la app llamado my_app, el entorno virtual llamado venv
+

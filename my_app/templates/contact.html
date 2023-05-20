@@ -1,0 +1,39 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contacto</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="welcome-contact">
+        <div>
+            <p class="bienvenida">Bienvenido</p>
+        </div>
+        <div class="navigation">
+            <a href="{% url 'index' %}">Inicio</a>
+            <a href="{% url 'blog' %}">Blog</a>
+            <a href="{% url 'about' %}">Acerca de la empresa</a>
+            <a href="{% url 'contact' %}">Contacto</a>
+        </div>
+    </div>
+    <div class="ubicacion-info">
+        <div class="mission-container">
+            <table>
+                <h2>Contacto de la empresa</h2>
+                <!-- Contenido de la tabla -->
+            </table>
+            <div class="bar-chart"></div>
+            <div class="pie-chart"></div>
+        </div>
+        <div class="mission-container">
+            <p class="bienvenida"> Ubicacion de la empresa</p>
+            <p>Informacion acerca  de ubicacion de la empresa.</p>
+            <img src="{% static 'img/divarpel.jpg' %}" alt="Imagen">
+        </div>
+        <!-- Resto del contenido -->
+    </div>
+</body>
+</html>
+{% endblock %}

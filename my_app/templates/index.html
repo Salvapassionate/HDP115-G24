@@ -1,0 +1,57 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sitio Web Profesional</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+<body>
+    <div class="welcome-navegation">
+    <div>
+        <p class="bienvenida">Bienvenido</p>
+    </div>
+    <div class="navigation">
+        <a href="{% url 'index' %}">Inicio</a>
+        <a href="{% url 'blog' %}">Blog</a>
+        <a href="{% url 'about' %}">Acerca de la empresa</a>
+        <a href="{% url 'contact' %}">Contacto</a>
+    </div>      
+</div>
+<div class="mision-estadistica">
+    <div class="mission-container">
+        <img src="{% static 'img/intercion.jpg' %}" alt="Imagen">
+        <p class="bienvenida"> Misión</p>
+        <h1>Misiones de Empresa</h1>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nombre de la Misión</th>
+            <th>Tipo de Misión</th>
+            <th>Empresa</th>
+            <th>Fecha</th>
+        </tr>
+        {% for mision in misiones %}
+        <tr>
+            <td>{{ mision.id }}</td>
+            <td>{{ mision.nombre_mision }}</td>
+            <td>{{ mision.tipo_mision }}</td>
+            <td>{{ mision.empresa }}</td>
+            <td>{{ mision.fecha }}</td>
+        </tr>
+        {% endfor %}
+        </table>
+    </div>
+    <!-- Resto del contenido -->
+    <div class="data-container">
+        <table>
+            <h2>Contenido de la tabla</h2>
+            <!-- Contenido de la tabla -->
+        </table>
+        <div class="bar-chart"></div>
+        <div class="pie-chart"></div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}
