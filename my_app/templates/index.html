@@ -40,6 +40,18 @@
             <td>{{ mision.empresa }}</td>
             <td>{{ mision.fecha }}</td>
         </tr>
+        <td>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="editar_mision" value="{{ mision.id }}">
+                <input type="submit" value="Editar">
+            </form>
+            <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="eliminar_mision" value="{{ mision.id }}">
+                <input type="submit" value="Eliminar">
+            </form>
+        </td>
         {% endfor %}
         </table>
     </div>
