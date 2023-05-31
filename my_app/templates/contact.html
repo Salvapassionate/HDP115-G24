@@ -4,10 +4,17 @@
 <html>
 <head>
     <title>Contacto</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/leaflet.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/Control.MiniMap.min.css' %}">
 </head>
 <body>
+
+    <!-- Referencias java script -->
+<script my_app="/js/leaflet.js"></script>
+<script my_app="/js/Control.MiniMap.min.js"></script>
+
     <div class="welcome-contact">
         <div>
             <p class="bienvenida">Bienvenido</p>
@@ -19,8 +26,91 @@
             <a href="{% url 'contact' %}">Contacto</a>
         </div>
     </div>
+
     <div class="ubicacion-info">
         <div class="mission-container">
+    
+            <p class="bienvenida"> Ubicaciones de las Empresas</p>
+
+            <div id="map">
+    
+            <!--aqui va el mapa de El Salvador-->
+    
+            </div>
+            <div class="signal-direction"><a class="btn" href="#empresas">
+                <p class="text-secondary m-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                        class="bi bi-arrow-down-circle-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z" />
+                    </svg>
+                </p>
+                <span class="fs-5 text-secondary">Click para ver las empresas</span>
+            </a>  
+            </div>
+    
+            <div class="h-100 pt-5">
+                <section class="containter mt-5">
+                    <header>
+                        <h1 class="text-center mb-5">Visualización de Empresas</h1><br>
+                    
+                    </header>
+                    <div class="scrollable shadow mb-5 bg-body rounded">
+    
+                        <table id="empresas" class="table">
+    
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Dirección</th>
+                                    <th scope="col">Corrreo</th>
+                                    <th scope="col">Teléfono</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for companies in empresas %}
+                                <tr>
+                                    <td>{{nombre}}</td>
+                                    <td>{{direccion}}</td>
+                                    <td>{{corrreo}}</td>
+                                    <td>{{telefono}}</td>
+                                </tr>
+                                {% endfor %}
+    
+                            </tbody>
+                        </table>
+    
+                    </div>
+                    
+                </section>
+                
+            </div>
+            
+                <!--Configuraciones del mapa interactivo-->
+                <script>
+                    var southWest = L.latLng(11.651058, -89.929926),
+                        northEast = L.latLng(15.708478, -87.62146),
+                        bounds = L.latLngBounds(southWest, northEast);
+    
+    
+                    var map = L.map('map', {
+                        maxBounds: bounds
+    
+                    }).setView([13.682016, -88.720093], 9);
+    
+                    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    
+                        maxZoom: 19,
+                        minZoom: 5,
+                        attribution: 'Map data &copy; <a href="http://wwww.openstreetmap.org/">OpenStreetMap</a> contributors'
+                    }).addTo(map);
+    
+                    const pines = []
+                    //y=-88;
+                    i=0;
+    
+                </script>
+    
             <table>
                 <h2>Contacto de la empresa</h2>
                 <!-- Contenido de la tabla -->
