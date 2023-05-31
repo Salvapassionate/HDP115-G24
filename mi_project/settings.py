@@ -84,22 +84,6 @@ DATABASES = {
         'PASSWORD': '12916',
         'HOST': 'localhost',
         'PORT': '3306',
-    },
-    'achievopb21015': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'achievodato',
-        'USER': 'achievopb21015',
-        'PASSWORD': 'Star.124',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    },
-    'rh21014': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'achievodato',
-        'USER': 'rh21014',
-        'PASSWORD': '266003',
-        'HOST': 'localhost',
-        'PORT': '3306',
     }
 
 }
