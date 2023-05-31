@@ -3,50 +3,12 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render,redirect
 from .models import Misiones
-
+from django.contrib import messages
 # Create your views here.
 
 def mostrar_misiones(request):
-    if request.method == 'POST':
-        if 'editar_mision' in request.POST:
-            mision_id = request.POST['editar_mision']
-            return redirect('editar_mision', mision_id=mision_id)
-        elif 'eliminar_mision' in request.POST:
-            mision_id = request.POST['eliminar_mision']
-            return redirect('eliminar_mision', mision_id=mision_id)
     misiones = Misiones.objects.all()
     return render(request, 'index.html', {'misiones': misiones})
-
-def editar_mision(request, mision_id):
-    mision = Misiones.objects.get(id=mision_id)
-
-    if request.method == 'POST':
-        # Obtener los datos actualizados del formulario
-        nombre_mision = request.POST['nombre_mision']
-        tipo_mision = request.POST['tipo_mision']
-        empresa = request.POST['empresa']
-        fecha = request.POST['fecha']
-
-        # Actualizar los campos de la misión
-        mision.nombre_mision = nombre_mision
-        mision.tipo_mision = tipo_mision
-        mision.empresa = empresa
-        mision.fecha = fecha
-        mision.save()
-
-        return redirect('misiones') # Redirigir a la página de misiones
-
-    return render(request, 'index.html', {'mision': mision})
-
-
-def eliminar_mision(request, mision_id):
-    mision = Misiones.objects.get(id=mision_id)
-
-    if request.method == 'POST':
-        mision.delete()
-        return redirect('misiones')  # Redirigir a la página de misiones
-
-    return render(request, 'index.html', {'mision': mision})
 
 def index(request):
     return render(request, 'index.html')
@@ -59,4 +21,47 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+def home(request):
+    cursosListados = Misiones.objects.all()
+    return render(request, "index.html", {"misiones": cursosListados})
+
+
+def registrarCurso(request):
+    id = request.POST['txtId']
+    nombre_mision = request.POST['txtMision']
+    tipo_mision = request.POST['txtTipo']
+    empresa = request.POST['txtEmpresa']
+    fecha = request.POST['txtFecha']
+
+    curso = Misiones.objects.create(id=id, nombre_mision=nombre_mision, tipo_mision=tipo_mision, empresa=empresa, fecha=fecha)
+    return redirect('/')
+
+
+def edicionCurso(request, id):
+    curso = Misiones.objects.get(id=id)
+    return render(request, "edicionCurso.html", {"curso": curso})  # Cambio aquí
+
+
+def editarCurso(request):
+    id = request.POST['txtId']
+    nombre_mision = request.POST['txtMision']
+    tipo_mision = request.POST['txtTipo']
+    empresa = request.POST['txtEmpresa']
+    fecha = request.POST['txtFecha']
+
+    curso = Misiones.objects.get(id=id)
+    curso.nombre_mision = nombre_mision
+    curso.tipo_mision = tipo_mision
+    curso.empresa = empresa
+    curso.fecha = fecha
+    curso.save()
+
+    return redirect('/')
+
+
+def eliminarCurso(request, id):
+    curso = Misiones.objects.get(id=id)
+    curso.delete()
+    return redirect('/')
 

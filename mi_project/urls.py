@@ -20,10 +20,15 @@ from my_app.views import mostrar_misiones
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', mostrar_misiones, name='mostrar_misiones'),
-    url(r'^misiones/editar/<int:mision_id>/', views.editar_mision, name='editar_mision'),
-    url(r'^misiones/eliminar/<int:mision_id>/', views.eliminar_mision, name='eliminar_mision'),
     url(r'^$', views.index, name='index'),
     url(r'^blog/$', views.blog, name='blog'),
     url(r'^about/$', views.about, name='about'),
     url(r'^contact/$', views.contact, name='contact'),
+
+   
+    url('^registrarCurso', views.registrarCurso),
+    url('^edicionCurso/<int:id>/$', views.edicionCurso),
+    url('^editarCurso', views.editarCurso),
+    url('^eliminarCurso/<int:id>/$', views.eliminarCurso),
+
 ]
