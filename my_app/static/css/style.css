@@ -103,6 +103,35 @@ table {
     display: flex;
 }
 
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+}
 
+.services {
+    background-color: #17c9e9;
+    padding: 20px;
+}
 
+.testimonials {
+    padding: 20px;
+}
 
+.service-item, .testimonial-item {
+    border: 1px solid #000;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.service-item h3 {
+    margin-top: 0;
+}
+
+.testimonial-item p:first-child {
+    font-style: italic;
+}
+
+.testimonial-item p:last-child {
+    text-align: right;
+}
