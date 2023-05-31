@@ -26,95 +26,92 @@
 <div class="empresa-info">
     <div class="mission-container">
         <img class="img-inicio" src="{% static 'img/intercion.jpg' %}" alt="Imagen">
-        <div class="container py-4">
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
-                    {% if messages %}
-                    {% for message in messages %}
-                    <div class="alert alert-dismissible alert-success">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong class="text-dark">{{ message }}</strong>
-                    </div>
-                    {% endfor %}
-                    {% endif %}
-                    <h2>Gestión de Misiones</h2>
-                    <div class="card">
-                        <div class="card-body">
-                            <form action="/registrarCurso/" method="POST">{% csrf_token %}
-                                <div class="form-group">
-                                    <input type="text" id="txtId" name="txtId" value="{{curso.id}}" class="form-control"
-                                        placeholder="Id" maxlength="150" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="txtMision" name="txtMision" value="{{curso.nombre_mision}}"
-                                        class="form-control" placeholder="Mision" maxlength="150" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="txtTipo" name="txtTipo" value="{{curso.tipo_mision}}"
-                                        class="form-control" min="1" max="9" placeholder="Tipo" maxlength="150" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="txtEmpresa" name="txtEmpresa" value="{{curso.empresa}}"
-                                        class="form-control" min="1" max="9" placeholder="Empresa" maxlength="150" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="txtFecha" name="txtFecha" value="{{curso.fecha}}"
-                                        class="form-control" min="1" max="9" placeholder="Fecha" maxlength="150" required>
-                                </div>
-                                <div class="form-group">
-                                    <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-                    <h1>Listado de Misiones</h1>
-                    <div class="table-responsive py-2">
-                        <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Mision</th>
-                                    <th>Tipo Mision</th>
-                                    <th>Empresa</th>
-                                    <th>Fecha</th>
-                                    <th colspan="2">Opciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for c in misiones %}
-                                <tr>
-                                    <td>{{c.id}}</td>
-                                    <td>{{c.nombre_mision}}</td>
-                                    <td>{{c.tipo_mision}}</td>
-                                    <td>{{c.empresa}}</td>
-                                    <td>{{c.fecha}}</td>
-                                    <td><a href="edicionCurso/{{c.id}}" class="btn btn-info">Editar</a></td>
-                                    <td><a href="eliminarCurso/{{c.id}}" class="btn btn-danger btnEliminacion">Eliminar</a>
-                                    </td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
+        <div>
+            <h2>Contenido de la Mision</h2>
+            <!-- Contenido de la Mision -->
         </div>
     </div>
     <!-- Resto del contenido -->
     <div class="mission-container">
-        <table>
-            <h2>Contenido de la tabla</h2>
-            <!-- Contenido de la tabla -->
-        </table>
         <div>
-            <p>Contenido de la grafica</p>
+            <h2>Estadisticas</h2>
+            <div class="container py-4">
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
+                        {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-dismissible alert-success">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            <strong class="text-dark">{{ message }}</strong>
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        <h2>Gestión de Misiones</h2>
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="/registrarCurso/" method="POST">{% csrf_token %}
+                                    <div class="form-group">
+                                        <input type="text" id="txtId" name="txtId" value="{{curso.id}}" class="form-control"
+                                            placeholder="Id" maxlength="150" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="txtMision" name="txtMision" value="{{curso.nombre_mision}}"
+                                            class="form-control" placeholder="Mision" maxlength="150" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="txtTipo" name="txtTipo" value="{{curso.tipo_mision}}"
+                                            class="form-control" min="1" max="9" placeholder="Tipo" maxlength="150" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="txtEmpresa" name="txtEmpresa" value="{{curso.empresa}}"
+                                            class="form-control" min="1" max="9" placeholder="Empresa" maxlength="150" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="txtFecha" name="txtFecha" value="{{curso.fecha}}"
+                                            class="form-control" min="1" max="9" placeholder="Fecha" maxlength="150" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
+                        <h1>Listado de Misiones</h1>
+                        <div class="table-responsive py-2">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Mision</th>
+                                        <th>Tipo Mision</th>
+                                        <th>Empresa</th>
+                                        <th>Fecha</th>
+                                        <th colspan="2">Opciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for c in misiones %}
+                                    <tr>
+                                        <td>{{c.id}}</td>
+                                        <td>{{c.nombre_mision}}</td>
+                                        <td>{{c.tipo_mision}}</td>
+                                        <td>{{c.empresa}}</td>
+                                        <td>{{c.fecha}}</td>
+                                        <td><a href="edicionCurso/{{c.id}}" class="btn btn-info">Editar</a></td>
+                                        <td><a href="eliminarCurso/{{c.id}}" class="btn btn-danger btnEliminacion">Eliminar</a>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-
-        </div>
-    </div>
+     </div>        
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
