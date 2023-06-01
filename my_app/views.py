@@ -81,11 +81,11 @@ def home_ubicacion(request):
     return render(request, "index.html", {"ubicaciones": ubicacionesListadas})
 
 def registrar_ubicacion(request):
-    nombreUB = request.POST['nombreUB']
-    departamento = request.POST['departamento']
-    municipio = request.POST['municipio']
-    coordenadaX = request.POST['coordenadaX']
-    coordenadaY = request.POST['coordenadaY']
+    nombreUB = request.POST['txtnombreUB']
+    departamento = request.POST['txtdepartamento']
+    municipio = request.POST['txtmunicipio']
+    coordenadaX = request.POST['txtcoordenadaX']
+    coordenadaY = request.POST['txtcoordenadaY']
 
     ubicacion = Ubicacion.objects.create(nombreUB=nombreUB, departamento=departamento, municipio=municipio, coordenadaX=coordenadaX, coordenadaY=coordenadaY)
     return redirect('/')
@@ -95,11 +95,11 @@ def edicion_ubicacion(request, nombre):
     return render(request, "edicionUbicacion.html", {"ubicacion": ubicacion})
 
 def editar_ubicacion(request):
-    nombreUB = request.POST['nombreUB']
-    departamento = request.POST['departamento']
-    municipio = request.POST['municipio']
-    coordenadaX = request.POST['coordenadaX']
-    coordenadaY = request.POST['coordenadaY']
+    nombreUB = request.POST['txtnombreUB']
+    departamento = request.POST['txtdepartamento']
+    municipio = request.POST['txtmunicipio']
+    coordenadaX = request.POST['txtcoordenadaX']
+    coordenadaY = request.POST['txtcoordenadaY']
 
     ubicacion = Ubicacion.objects.get(nombreUB=nombreUB)
     ubicacion.departamento = departamento

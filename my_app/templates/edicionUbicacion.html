@@ -1,0 +1,40 @@
+{% extends "./index.html" %}
+
+{% block title %}Gestión de Ubicaciones{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edición de Ubicación</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editar_ubicacion/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="ntxtnombreUB" name="txtnombreUB" value="{{ubicacion.nombreUB}}" class="form-control" placeholder="Nombre de la ubicación"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtdepartamento" name="txtdepartamento" value="{{ubicacion.departamento}}" class="form-control" placeholder="Departamento"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtmunicipio" name="txtmunicipio" value="{{ubicacion.municipio}}" class="form-control" placeholder="Municipio"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtcoordenadaX" name="txtcoordenadaX" value="{{ubicacion.coordenadaX}}" class="form-control" placeholder="Coordenada X"
+                            maxlength="20" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtcoordenadaY" name="txtcoordenadaY" value="{{ubicacion.coordenadaY}}" class="form-control" placeholder="Coordenada Y"
+                            maxlength="20" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
