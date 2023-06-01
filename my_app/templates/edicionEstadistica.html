@@ -1,0 +1,56 @@
+{% extends "./index.html" %}
+
+{% block title %}Gestión de Estadísticas{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edición de Estadística</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editar_estadistica/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtId" name="txtId" value="{{estadistica.id}}" class="form-control" placeholder="Id"
+                            minlength="6" maxlength="6" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtNombre" name="txtNombre" value="{{estadistica.nombre}}" class="form-control" placeholder="Nombre"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtApellido" name="txtApellido" value="{{estadistica.apellido}}" class="form-control" placeholder="Apellido"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" id="txtEdad" name="txtEdad" value="{{estadistica.edad}}" class="form-control" min="1" max="150"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtGenero" name="txtGenero" value="{{estadistica.genero}}" class="form-control" placeholder="Género"
+                            maxlength="50" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtTipoDiscapacidad" name="txtTipoDiscapacidad" value="{{estadistica.tipodiscapacidad}}" class="form-control" placeholder="Tipo de Discapacidad"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtSector" name="txtSector" value="{{estadistica.sector}}" class="form-control" placeholder="Sector"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtActividadEconomica" name="txtActividadEconomica" value="{{estadistica.actividadeconomica}}" class="form-control" placeholder="Actividad Económica"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtCategoriaOcupacion" name="txtCategoriaOcupacion" value="{{estadistica.categoriaocupacion}}" class="form-control" placeholder="Categoría de Ocupación"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

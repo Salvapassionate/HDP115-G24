@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
-from __future__ import unicode_literals
-
-from django.shortcuts import render,redirect
-from .models import Misiones
+from django.shortcuts import render, redirect
+from .models import Estadisticas
 from django.contrib import messages
-# Create your views here.
 
-def mostrar_misiones(request):
-    misiones = Misiones.objects.all()
-    return render(request, 'index.html', {'misiones': misiones})
+def mostrar_estadisticas(request):
+    estadisticas = Estadisticas.objects.all()
+    return render(request, 'index.html', {'estadisticas': estadisticas})
 
 def index(request):
     return render(request, 'index.html')
@@ -23,45 +20,50 @@ def contact(request):
     return render(request, 'contact.html')
 
 def home(request):
-    cursosListados = Misiones.objects.all()
-    return render(request, "index.html", {"misiones": cursosListados})
+    estadisticasListadas = Estadisticas.objects.all()
+    return render(request, "index.html", {"estadisticas": estadisticasListadas})
 
+def registrar_estadistica(request):
+    nombre = request.POST['txtNombre']
+    apellido = request.POST['txtApellido']
+    edad = request.POST['txtEdad']
+    genero = request.POST['txtGenero']
+    tipodiscapacidad = request.POST['txtTipoDiscapacidad']
+    sector = request.POST['txtSector']
+    actividadeconomica = request.POST['txtActividadEconomica']
+    categoriaocupacion = request.POST['txtCategoriaOcupacion']
 
-def registrarCurso(request):
-    id = request.POST['txtId']
-    nombre_mision = request.POST['txtMision']
-    tipo_mision = request.POST['txtTipo']
-    empresa = request.POST['txtEmpresa']
-    fecha = request.POST['txtFecha']
-
-    curso = Misiones.objects.create(id=id, nombre_mision=nombre_mision, tipo_mision=tipo_mision, empresa=empresa, fecha=fecha)
+    estadistica = Estadisticas.objects.create(nombre=nombre, apellido=apellido, edad=edad, genero=genero, tipodiscapacidad=tipodiscapacidad, sector=sector, actividadeconomica=actividadeconomica, categoriaocupacion=categoriaocupacion)
     return redirect('/')
 
+def edicion_estadistica(request, nombre):
+    estadistica = Estadisticas.objects.get(nombre=nombre)
+    return render(request, "edicionEstadistica.html", {"estadistica": estadistica})
 
-def edicionCurso(request, id):
-    curso = Misiones.objects.get(id=id)
-    return render(request, "edicionCurso.html", {"curso": curso})  # Cambio aquí
+def editar_estadistica(request):
+    """id = request.POST['txtId']"""
+    nombre = request.POST['txtNombre']
+    apellido = request.POST['txtApellido']
+    edad = request.POST['txtEdad']
+    genero = request.POST['txtGenero']
+    tipodiscapacidad = request.POST['txtTipoDiscapacidad']
+    sector = request.POST['txtSector']
+    actividadeconomica = request.POST['txtActividadEconomica']
+    categoriaocupacion = request.POST['txtCategoriaOcupacion']
 
-
-def editarCurso(request):
-    id = request.POST['txtId']
-    nombre_mision = request.POST['txtMision']
-    tipo_mision = request.POST['txtTipo']
-    empresa = request.POST['txtEmpresa']
-    fecha = request.POST['txtFecha']
-
-    curso = Misiones.objects.get(id=id)
-    curso.nombre_mision = nombre_mision
-    curso.tipo_mision = tipo_mision
-    curso.empresa = empresa
-    curso.fecha = fecha
-    curso.save()
+    estadistica = Estadisticas.objects.get(nombre=nombre)
+    estadistica.apellido = apellido
+    estadistica.edad = edad
+    estadistica.genero = genero
+    estadistica.tipodiscapacidad = tipodiscapacidad
+    estadistica.sector = sector
+    estadistica.actividadeconomica = actividadeconomica
+    estadistica.categoriaocupacion = categoriaocupacion
+    estadistica.save()
 
     return redirect('/')
 
-
-def eliminarCurso(request, id):
-    curso = Misiones.objects.get(id=id)
-    curso.delete()
+def eliminar_estadistica(request, nombre):
+    estadistica = Estadisticas.objects.get(nombre=nombre)
+    estadistica.delete()
     return redirect('/')
-

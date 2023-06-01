@@ -16,19 +16,19 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from my_app import views
-from my_app.views import mostrar_misiones
+from my_app.views import mostrar_estadisticas
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', mostrar_misiones, name='mostrar_misiones'),
+    url(r'^$', mostrar_estadisticas, name='mostrar_estadisticas'),
     url(r'^$', views.index, name='index'),
     url(r'^blog/$', views.blog, name='blog'),
     url(r'^about/$', views.about, name='about'),
     url(r'^contact/$', views.contact, name='contact'),
 
    
-    url('^registrarCurso', views.registrarCurso),
-    url('^edicionCurso/<int:id>/$', views.edicionCurso),
-    url('^editarCurso', views.editarCurso),
-    url('^eliminarCurso/<int:id>/$', views.eliminarCurso),
+    url('^registrar_estadistica', views.registrar_estadistica),
+    url('^edicion_etadistica/<nombre>/$', views.edicion_estadistica),
+    url('^editar_estadistica', views.editar_estadistica),
+    url('^eliminar_estadistica/<nombre>/$', views.eliminar_estadistica),
 
 ]

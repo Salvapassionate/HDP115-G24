@@ -46,29 +46,41 @@
                         </div>
                         {% endfor %}
                         {% endif %}
-                        <h2>Gestión de Misiones</h2>
+                        <h2>Gestión de Estadísticas</h2>
                         <div class="card">
                             <div class="card-body">
-                                <form action="/registrarCurso/" method="POST">{% csrf_token %}
+                                <form action="/registrar_estadistica/" method="POST">{% csrf_token %}
                                     <div class="form-group">
-                                        <input type="text" id="txtId" name="txtId" value="{{curso.id}}" class="form-control"
-                                            placeholder="Id" maxlength="150" required>
+                                        <input type="text" id="txtNombre" name="txtNombre" class="form-control"
+                                            placeholder="Nombre" maxlength="100" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" id="txtMision" name="txtMision" value="{{curso.nombre_mision}}"
-                                            class="form-control" placeholder="Mision" maxlength="150" required>
+                                        <input type="text" id="txtApellido" name="txtApellido" class="form-control"
+                                            placeholder="Apellido" maxlength="100" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" id="txtTipo" name="txtTipo" value="{{curso.tipo_mision}}"
-                                            class="form-control" min="1" max="9" placeholder="Tipo" maxlength="150" required>
+                                        <input type="number" id="txtEdad" name="txtEdad" class="form-control" min="1" max="150"
+                                            placeholder="Edad" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" id="txtEmpresa" name="txtEmpresa" value="{{curso.empresa}}"
-                                            class="form-control" min="1" max="9" placeholder="Empresa" maxlength="150" required>
+                                        <input type="text" id="txtGenero" name="txtGenero" class="form-control"
+                                            placeholder="Género" maxlength="50" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" id="txtFecha" name="txtFecha" value="{{curso.fecha}}"
-                                            class="form-control" min="1" max="9" placeholder="Fecha" maxlength="150" required>
+                                        <input type="text" id="txtTipoDiscapacidad" name="txtTipoDiscapacidad" class="form-control"
+                                            placeholder="Tipo de Discapacidad" maxlength="100" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="txtSector" name="txtSector" class="form-control" placeholder="Sector"
+                                            maxlength="100" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="txtActividadEconomica" name="txtActividadEconomica" class="form-control"
+                                            placeholder="Actividad Económica" maxlength="100" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="txtCategoriaOcupacion" name="txtCategoriaOcupacion" class="form-control"
+                                            placeholder="Categoría de Ocupación" maxlength="100" required>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
@@ -78,30 +90,35 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-                        <h1>Listado de Misiones</h1>
+                        <h1>Listado de Estadísticas</h1>
                         <div class="table-responsive py-2">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Id</th>
-                                        <th>Mision</th>
-                                        <th>Tipo Mision</th>
-                                        <th>Empresa</th>
-                                        <th>Fecha</th>
+                                        <th>Nombre</th>
+                                        <th>Apellido</th>
+                                        <th>Edad</th>
+                                        <th>Género</th>
+                                        <th>Tipo de Discapacidad</th>
+                                        <th>Sector</th>
+                                        <th>Actividad Económica</th>
+                                        <th>Categoría de Ocupación</th>
                                         <th colspan="2">Opciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {% for c in misiones %}
+                                    {% for estadistica in estadisticas %}
                                     <tr>
-                                        <td>{{c.id}}</td>
-                                        <td>{{c.nombre_mision}}</td>
-                                        <td>{{c.tipo_mision}}</td>
-                                        <td>{{c.empresa}}</td>
-                                        <td>{{c.fecha}}</td>
-                                        <td><a href="edicionCurso/{{c.id}}" class="btn btn-info">Editar</a></td>
-                                        <td><a href="eliminarCurso/{{c.id}}" class="btn btn-danger btnEliminacion">Eliminar</a>
-                                        </td>
+                                        <td>{{ estadistica.nombre }}</td>
+                                        <td>{{ estadistica.apellido }}</td>
+                                        <td>{{ estadistica.edad }}</td>
+                                        <td>{{ estadistica.genero }}</td>
+                                        <td>{{ estadistica.tipodiscapacidad }}</td>
+                                        <td>{{ estadistica.sector }}</td>
+                                        <td>{{ estadistica.actividadeconomica }}</td>
+                                        <td>{{ estadistica.categoriaocupacion }}</td>
+                                        <td><a href="/edicion_estadistica/{{ estadistica.nombre }}" class="btn btn-info">Editar</a></td>
+                                        <td><a href="/eliminar_estadistica/{{ estadistica.nombre }}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>
@@ -109,8 +126,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>            
+        </div>    
       <div>
         <h2>Contenido de grafica</h2>
         <!-- Resto del contenido de graficas-->
