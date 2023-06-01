@@ -19,3 +19,28 @@ class Estadisticas(models.Model):
     
     class Meta:
         db_table = 'my_app_estadisticas'
+
+class Ubicacion(models.Model):
+    nombreUb = models.CharField(max_length=100)
+    departamento = models.CharField(max_length=100)
+    municipio = models.CharField(max_length=100)
+    coordenadaX = models.DecimalField(max_digits=9, decimal_places=6)
+    coordenadaY = models.DecimalField(max_digits=9, decimal_places=6)
+    
+    def __str__(self):
+        return self.nombreUb
+    
+    class Meta:
+        db_table = 'my_app_ubicaciones'
+
+class Empresa(models.Model):
+    nombreE = models.CharField(max_length=100)
+    direccionE = models.CharField(max_length=200)
+    correoE = models.EmailField()
+    telefonoE = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.nombreE
+    
+    class Meta:
+        db_table = 'my_app_empresas'

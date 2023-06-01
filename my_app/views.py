@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, redirect
-from .models import Estadisticas
+from .models import Estadisticas,Ubicacion,Empresa
 from django.contrib import messages
 
 def mostrar_estadisticas(request):
     estadisticas = Estadisticas.objects.all()
     return render(request, 'index.html', {'estadisticas': estadisticas})
+
+def mostrar_ubicaciones(request):
+    ubicaciones = Ubicacion.objects.all()
+    return render(request, 'index.html', {'ubicaciones': ubicaciones})
+
+def mostrar_empresas(request):
+    empresas = Empresa.objects.all()
+    return render(request, 'index.html', {'empresas': empresas})
 
 def index(request):
     return render(request, 'index.html')
@@ -67,3 +75,81 @@ def eliminar_estadistica(request, nombre):
     estadistica = Estadisticas.objects.get(nombre=nombre)
     estadistica.delete()
     return redirect('/')
+
+def home_ubicacion(request):
+    ubicacionesListadas = Ubicacion.objects.all()
+    return render(request, "index.html", {"ubicaciones": ubicacionesListadas})
+
+def registrar_ubicacion(request):
+    nombreUB = request.POST['nombreUB']
+    departamento = request.POST['departamento']
+    municipio = request.POST['municipio']
+    coordenadaX = request.POST['coordenadaX']
+    coordenadaY = request.POST['coordenadaY']
+
+    ubicacion = Ubicacion.objects.create(nombreUB=nombreUB, departamento=departamento, municipio=municipio, coordenadaX=coordenadaX, coordenadaY=coordenadaY)
+    return redirect('/')
+
+def edicion_ubicacion(request, nombre):
+    ubicacion = Ubicacion.objects.get(nombreUB=nombre)
+    return render(request, "edicionUbicacion.html", {"ubicacion": ubicacion})
+
+def editar_ubicacion(request):
+    nombreUB = request.POST['nombreUB']
+    departamento = request.POST['departamento']
+    municipio = request.POST['municipio']
+    coordenadaX = request.POST['coordenadaX']
+    coordenadaY = request.POST['coordenadaY']
+
+    ubicacion = Ubicacion.objects.get(nombreUB=nombreUB)
+    ubicacion.departamento = departamento
+    ubicacion.municipio = municipio
+    ubicacion.coordenadaX = coordenadaX
+    ubicacion.coordenadaY = coordenadaY
+    ubicacion.save()
+
+    return redirect('/')
+
+def eliminar_ubicacion(request, nombre):
+    ubicacion = Ubicacion.objects.get(nombreUB=nombre)
+    ubicacion.delete()
+    return redirect('/')
+
+from .models import Empresa
+
+def home_empresa(request):
+    empresasListadas = Empresa.objects.all()
+    return render(request, "index.html", {"empresas": empresasListadas})
+
+def registrar_empresa(request):
+    nombreE = request.POST['txtNombreE']
+    direccionE = request.POST['txtDireccionE']
+    correoE = request.POST['txtCorreoE']
+    telefonoE = request.POST['txtTelefonoE']
+
+    empresa = Empresa.objects.create(nombreE=nombreE, direccionE=direccionE, correoE=correoE, telefonoE=telefonoE)
+    return redirect('/')
+
+def edicion_empresa(request, nombre):
+    empresa = Empresa.objects.get(nombreE=nombre)
+    return render(request, "edicionEmpresa.html", {"empresa": empresa})
+
+def editar_empresa(request):
+    nombreE = request.POST['txtNombreE']
+    direccionE = request.POST['txtDireccionE']
+    correoE = request.POST['txtCorreoE']
+    telefonoE = request.POST['txtTelefonoE']
+
+    empresa = Empresa.objects.get(nombreE=nombreE)
+    empresa.direccionE =  direccionE
+    empresa.correoE = correoE
+    empresa.telefonoE = telefonoE 
+    empresa.save()
+
+    return redirect('/')
+
+def eliminar_empresa(request, nombreE):
+    empresa = Empresa.objects.get(nombreE=nombreE)
+    empresa.delete()
+    return redirect('/')
+

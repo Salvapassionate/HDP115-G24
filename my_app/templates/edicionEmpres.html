@@ -1,0 +1,36 @@
+{% extends "./index.html" %}
+
+{% block title %}Gestión de Empresas{% endblock %}
+
+{% block body %}
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <h2>Edición de Empresa</h2>
+        <div class="card">
+            <div class="card-body">
+                <form action="/editar_empresa/" method="POST">{% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" id="txtNombreE" name="txtNombre" value="{{empresa.nombreE}}" class="form-control" placeholder="Nombre"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtDireccionE" name="txtDireccion" value="{{empresa.direcciónE}}" class="form-control" placeholder="Dirección"
+                            maxlength="200" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="txtCorreo" name="txtCorreo" value="{{empresa.correoE}}" class="form-control" placeholder="Correo"
+                            maxlength="100" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="txtTelefono" name="txtTelefono" value="{{empresa.teléfonoE}}" class="form-control" placeholder="Teléfono"
+                            maxlength="20" required>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
