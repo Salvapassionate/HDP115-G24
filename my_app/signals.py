@@ -1,19 +1,22 @@
-"""
+
 from django.db.models.signals import post_migrate 
 from django.dispatch import receiver
-from .models import Administrador
+from .models import Estadisticas
 from django.contríb.auth.hashers import make_password
 
-©receiver(post_migrate)
+@receiver(post_migrate)
 def crear_instancias_administrador(sender, **kwargs):
-if sender.name == 'my_app':
-if not Administrador.objects.exists():
-instancias = [
-{'email':'correo1', 'contrasenía': 'contra1' },
-{'email':'correo2', 'contrasenía': 'contra2' },
-{'email':'correo3', 'contrasenía': 'contra3' },
-for instancia in instancias:
-instancia['contrasenia'] = make_password(instancia['contrasenia'])
-Adminístrador.objects.create(email=instancia[ 'email' ], contrasenia=instancia[ 'contrasenia' ])
-]
-"""
+    if sender.name == 'my_app':
+        if not Estadisticas.objects.exists():
+            instancias = [
+            {'nombre':'Jose','apelllido': 'Barrera', 'edad': '45' , 'genero': 'Masculino', 'tipodiscapacidad':'Auditiva' , 'sector': 'comercio', 'actividadeconomica':'Actividades inmobiliarias', 'categoriaocupacion':'Ocupaciones elemntales' },
+            {'nombre': 'Juan', 'apellido': 'Pérez', 'edad': '35', 'genero': 'Masculino', 'tipodiscapacidad': 'Motriz', 'sector': 'Servicios', 'actividadeconomica': 'Consultoría', 'categoriaocupacion': 'Profesionales'}
+
+           
+            ]
+        for instancia in instancias:
+            instancia['contrasenia'] = make_password(instancia['contrasenia'])
+            Estadisticas.objects.create(nombre=instancia[ 'nombre' ], apellido=instancia[ 'apellido' ],edad=instancia[ 'edad' ], genero=instancia[ 'apellido' ]
+                                        ,topodiscapacidad=instancia[ 'tipodiscapacidad' ], sector=instancia[ 'sector' ], comercio=instancia[ 'comercio' ],actividadeconomica=instancia[ 'actividadeconomica' ]
+                                        ,categoriaocupacion=instancia[ 'categoriaocupacion' ], apellido=instancia[ 'apellido' ])
+
