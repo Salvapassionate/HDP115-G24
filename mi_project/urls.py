@@ -31,4 +31,11 @@ urlpatterns = [
     url('^editar_estadistica', views.editar_estadistica),
     url('^eliminar_estadistica/<nombre>/$', views.eliminar_estadistica),
 
+    url(r'^sistema/$', views.sistema, name='sistema'),
+    url('^login/$', views.login_view, name='login'),
+    url(r'^register/$', views.register, name='register'),
+    url(r'^prueba/$', views.prueba, name='prueba'),
+
+    
+
 ]
