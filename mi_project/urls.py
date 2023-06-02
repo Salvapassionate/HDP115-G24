@@ -19,8 +19,8 @@ from my_app import views
 from my_app.views import mostrar_estadisticas
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', mostrar_estadisticas, name='mostrar_estadisticas'),
-    url(r'^$', views.index, name='index'),
+    url(r'^index/$', mostrar_estadisticas, name='mostrar_estadisticas'),
+    url(r'^index/$', views.index, name='index'),
     url(r'^blog/$', views.blog, name='blog'),
     url(r'^about/$', views.about, name='about'),
     url(r'^contact/$', views.contact, name='contact'),
@@ -31,10 +31,11 @@ urlpatterns = [
     url('^editar_estadistica', views.editar_estadistica),
     url('^eliminar_estadistica/<nombre>/$', views.eliminar_estadistica),
 
-    url(r'^sistema/$', views.sistema, name='sistema'),
+    url(r'^$', views.sistema, name='sistema'),
     url('^login/$', views.login_view, name='login'),
     url(r'^register/$', views.register, name='register'),
-    url(r'^prueba/$', views.prueba, name='prueba'),
+    url('logout/', views.sistema, name='logout'),
+    
 
     
 

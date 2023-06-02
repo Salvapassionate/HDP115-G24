@@ -2,7 +2,7 @@
 from django.shortcuts import render, redirect
 from .models import Estadisticas,Ubicacion,Empresa
 from django.contrib import messages
-from django.contrib.auth import authenticate, login 
+from django.contrib.auth import authenticate, login, logout
 from .models import CustomUser, Administrador, Usuario
 
 def mostrar_estadisticas(request):
@@ -48,12 +48,12 @@ def login_view(request):
         if user is not None:
             login(request, user)
             if user.is_admin:
-                return redirect('prueba')
+                return redirect('index')
             else:
-                return redirect('prueba')
+                return redirect('index')
         else:
             error_message = 'Invalid username or password.'
-            return render(request, 'prueba.html', {'error_message': error_message})
+            return render(request, 'index.html', {'error_message': error_message})
     else:
         return render(request, 'login.html')
 
@@ -69,11 +69,13 @@ def register(request):
             error_message = 'Username is already taken.'
             return render(request, 'register.html', {'error_message': error_message})
         user = CustomUser.objects.create_user(username=username, password=password)
-        return redirect('prueba')
+        return redirect('index')
     else:
         return render(request, 'register.html')
 
-
+def logout_view(request):
+    logout(request)
+    return redirect('login_view')
 
 
 def home(request):

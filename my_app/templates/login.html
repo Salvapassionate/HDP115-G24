@@ -3,25 +3,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My App - Login</title>
+  <title>My App - Iniciar sesion</title>
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
   <div class="container">
-    <h1>Login</h1>
+    <h1>Iniciar sesion</h1>
     {% if error_message %}
     <p class="error-message">{{ error_message }}</p>
     {% endif %}
     <form method="POST" action="{% url 'login' %}">
       {% csrf_token %}
-      <label for="username">Username:</label>
+      <label for="username">Usuario:</label>
       <input type="text" name="username" required>
-      <label for="password">Password:</label>
+      <label for="password">Contrasenia:</label>
       <input type="password" name="password" required>
       <input type="submit" value="Login">
     </form>
     <div class="link">
-      Don't have an account? <a href="{% url 'register' %}">Register</a>
+      No tiene una cuenta? <a href="{% url 'register' %}">Registrase</a>
     </div>
   </div>
 </body>
