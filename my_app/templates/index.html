@@ -186,7 +186,7 @@
             })
 
             const ctxPieEstadisticas = document.getElementById('chartPieEstadisticas')
-            const ctxPieEstadisticas = document.getElementById('chartBarEstadisticas')
+            const ctxBarEstadisticas = document.getElementById('chartBarEstadisticas')
 
             const dataPieEstadisticas = [
                 tableEstadisticas.querySelectorAll('.text-danger').length,
@@ -194,10 +194,10 @@
                 tableEstadisticas.querySelectorAll('.text-warning').length,
             ]
 
-            const dataBarTipoDeDiscapacidad = {
-                'Dicapacidad física': 0,
-                'Dicapacidad visual': 0,
-                'Dicapacidad auditiva': 0,
+            const dataBarRamaEconomica = {
+                'Industria manufacturera': 0,
+                'Electricidad, gas, vapor y aire acondicionado': 0,
+                'Construcción': 0,
                 'Discapacidad del habla y del lenguaje': 0,
                 'Dicapacidad intelectual': 0,
                 'Dicapacidad del desarrollo': 0,
@@ -211,9 +211,21 @@
                 data: {
                     labels: ['Dicapacidad física', 'Dicapacidad visual', 'Dicapacidad auditiva', 'Discapacidad del habla y del lenguaje', 'Dicapacidad intelectual', 'Dicapacidad del desarrollo', 'Dicapacidad psicosocial', 'Dicapacidad invisible'],
                     datasets: [{
-                        label: 'Cantidad de Personas Discapacitadas'
-                        data: dataPieEstadisticas,                        
+                        label: 'Cantidad de Personas Discapacitadas',
+                        data: dataPieEstadisticas,
+                        backgroundColor: [
+                            'rgba(255, 99, 132)',
+                            'rgba(75, 192, 192)',
+                            'rgba(255, 206, 86)',
+                        ],                        
                     }]
+                }
+            })
+
+            new Chart(ctxBarEstadisticas, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(dataBarRamaEconomica),
                 }
             })
         </script>
