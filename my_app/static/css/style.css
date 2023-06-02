@@ -29,8 +29,7 @@ img {
 /* Estilos del contenedor de la misión */
 .mission-container {
     width: 100%;
-    max-width: 400px;
-    text-align: left;
+    text-align: center;
 }
 /* Estilos de los botones de navegación */
 .navigation {
