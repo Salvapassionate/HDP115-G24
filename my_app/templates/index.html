@@ -172,6 +172,63 @@
         </div>    
       <div>
         <h2>Contenido de grafica</h2>
+        <script>
+            const tableEstadisticas = document.getElementById('estadisticas')
+            const nivelEstadisticasRows = [...tableEstadisticas.querySelectorAll('.nivel-estadistica')]
+            const coloresDeNiveles = {
+                amarilla: 'text-warning',
+                roja: 'text-danger',
+                verde: 'text-success',
+            }
+            nivelEstadisticasRows.forEach((estadistica) => {
+                const nivelDeEstadistica = estadistica.dataset.nivel
+                estadistica.classList.add(coloresDeNiveles[nivelDeEstadistica])
+            })
+
+            const ctxPieEstadisticas = document.getElementById('chartPieEstadisticas')
+            const ctxBarEstadisticas = document.getElementById('chartBarEstadisticas')
+
+            const dataPieEstadisticas = [
+                tableEstadisticas.querySelectorAll('.text-danger').length,
+                tableEstadisticas.querySelectorAll('.text-success').length,
+                tableEstadisticas.querySelectorAll('.text-warning').length,
+            ]
+
+            const dataBarRamaEconomica = {
+                'Industria manufacturera': 0,
+                'Electricidad, gas, vapor y aire acondicionado': 0,
+                'Construcción': 0,
+                'Discapacidad del habla y del lenguaje': 0,
+                'Dicapacidad intelectual': 0,
+                'Dicapacidad del desarrollo': 0,
+                'Dicapacidad psicosocial': 0,
+                'Dicapacidad invisible': 0,
+            }
+
+            new Chart(ctxPieEstadisticas, {
+
+                type: 'pie',
+                data: {
+                    labels: ['Dicapacidad física', 'Dicapacidad visual', 'Dicapacidad auditiva', 'Discapacidad del habla y del lenguaje', 'Dicapacidad intelectual', 'Dicapacidad del desarrollo', 'Dicapacidad psicosocial', 'Dicapacidad invisible'],
+                    datasets: [{
+                        label: 'Cantidad de Personas Discapacitadas',
+                        data: dataPieEstadisticas,
+                        backgroundColor: [
+                            'rgba(255, 99, 132)',
+                            'rgba(75, 192, 192)',
+                            'rgba(255, 206, 86)',
+                        ],                        
+                    }]
+                }
+            })
+
+            new Chart(ctxBarEstadisticas, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(dataBarRamaEconomica),
+                }
+            })
+        </script>
         <!-- Resto del contenido de graficas-->
       </div>
     </div>        
