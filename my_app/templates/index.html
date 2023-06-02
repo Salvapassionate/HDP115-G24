@@ -198,11 +198,19 @@
                 'Industria manufacturera': 0,
                 'Electricidad, gas, vapor y aire acondicionado': 0,
                 'Construcción': 0,
-                'Discapacidad del habla y del lenguaje': 0,
-                'Dicapacidad intelectual': 0,
-                'Dicapacidad del desarrollo': 0,
-                'Dicapacidad psicosocial': 0,
-                'Dicapacidad invisible': 0,
+                'Comercio al por mayor y al por menor y reparación de vehículos automotores': 0,
+                'Transporte y almacenamiento': 0,
+                'Alojamiento y servicios de alimento': 0,
+                'Información y comunicaciones': 0,
+                'Actividades financieras y seguros': 0,
+                'Actividades inmobiliarias ': 0,
+                'Act. Profesionles, científicas y técnicas': 0,
+                'Servicios administrativos y de apoyo': 0,
+                'Administración pública': 0,
+                'Enseñanza': 0,
+                'Atención a la salud humnana': 0,
+                'Actividades artísticas, entretenimiento y recreativas': 0,
+                'Otras actividadedes de servicios': 0,
             }
 
             new Chart(ctxPieEstadisticas, {
@@ -226,7 +234,66 @@
                 type: 'bar',
                 data: {
                     labels: Object.keys(dataBarRamaEconomica),
-                }
+                    datasets: [{
+                        label: 'Rama Económica',
+                        data: dataBarRamaEconomica,
+                        backgroundColor: [
+                            'rgb(41, 52, 98)',
+                            'rgb(28, 214, 206)',
+                            'rgb(254, 219, 57)',
+                            'rgb(214, 28, 78)',
+                            'rgb(49, 225, 247)',
+                            'rgb(216, 0, 166)',
+                            'rgb(255, 119, 119)',
+                            'rgb(4, 0, 154)',
+                            'rgb(240, 235, 204)',
+                            'rgb(227, 199, 112)',
+                            'rgb(177, 175, 255)',
+                            'rgb(200, 255, 212)',
+                            'rgb(159, 135, 114)',
+                            'rgb(204, 54, 54)',
+                        ],                        
+                    }]
+                },
+            })
+
+            const buttonsForDownloadChartAsPdf = [...document.querySelectorAll('.download--pdf--chart')]
+            buttonsForDownloadChartAsPdf.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const target = button.dataset.target
+                    const chartCanvas = document.getElementById(target)
+                    const canvasImage = chartCanvas.toDataURL('image/png', 1.0)
+                    let pdf = new jspdf.jsPDF('landscape')
+                    pdf.text(chartCanvas.previousElementSibling.textContent, 15, 15)
+                    pdf.addImage(canvasImage, 'PNG', 50, 30, 150, 150)
+
+                    pdf.save('chart.pdf')
+                })
+            })
+
+            const buttonsForDownloadChartAsXLS = [...document.querySelectorAll('.download--excel--chart')]
+            buttonsForDownloadChartAsXLS.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const target = button.dataset.target
+                    const chartCanvas = document.getElementById(target)
+                    const canvasImage = chartCanvas.toDataURL('image/png', 1.0)
+                    
+                    console.log(canvasImage)
+
+                    let workbook = new ExcelJS.Workbook()
+                    const sheet = workbook.addWorksheet('Grafico')
+                    var imageID = workbook.addImage({
+                        base64: canvasImage,
+                        extension: 'png',
+                    })
+                    console.log("imageID", imageID)
+                    sheet.addImage(imageID, 'B2:M28')
+
+                    workbook.xlsx.writeBuffer().then((data) => {
+                        const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8'});
+                        saveAs(blob, 'chart.xlsx');
+                    });                    
+                })
             })
         </script>
         <!-- Resto del contenido de graficas-->
