@@ -2,6 +2,8 @@
 from django.shortcuts import render, redirect
 from .models import Estadisticas,Ubicacion,Empresa
 from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
+from .models import CustomUser, Administrador, Usuario
 
 def mostrar_estadisticas(request):
     estadisticas = Estadisticas.objects.all()
@@ -14,6 +16,14 @@ def mostrar_ubicaciones(request):
 def mostrar_empresas(request):
     empresas = Empresa.objects.all()
     return render(request, 'index.html', {'empresas': empresas})
+def sistema(request):
+    return render(request, 'sistema.html')
+
+def login(request):
+    return render(request, 'login.html')
+
+def register(request):
+    return render(request, 'register.html')
 
 def index(request):
     return render(request, 'index.html')
@@ -26,6 +36,47 @@ def about(request):
 
 def contact(request):
     return render(request, 'contact.html')
+
+def prueba(request):
+    return render(request, 'prueba.html')
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            if user.is_admin:
+                return redirect('index')
+            else:
+                return redirect('index')
+        else:
+            error_message = 'Invalid username or password.'
+            return render(request, 'index.html', {'error_message': error_message})
+    else:
+        return render(request, 'login.html')
+
+def register(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        confirm_password = request.POST['confirm_password']
+        if password != confirm_password:
+            error_message = 'Passwords do not match.'
+            return render(request, 'register.html', {'error_message': error_message})
+        if CustomUser.objects.filter(username=username).exists():
+            error_message = 'Username is already taken.'
+            return render(request, 'register.html', {'error_message': error_message})
+        user = CustomUser.objects.create_user(username=username, password=password)
+        return redirect('index')
+    else:
+        return render(request, 'register.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect('login_view')
+
 
 def home(request):
     estadisticasListadas = Estadisticas.objects.all()

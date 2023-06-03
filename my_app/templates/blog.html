@@ -16,24 +16,80 @@
             <a href="{% url 'blog' %}">Blog</a>
             <a href="{% url 'about' %}">Acerca de la empresa</a>
             <a href="{% url 'contact' %}">Contacto</a>
+            <a href="{% url 'logout' %}">Cerrar Sesion</a>
         </div>
     </div>
     <div class="blog-info">
         <div class="consejos-container">
+            <head>
+                <title>Articulos de consejos</title>
+                <style>
+                    .cuadro1{
+                        width:380px;
+                        height: 600px;
+                        border: 1px solid #000;
+                        padding: 10px;
+                        background-color:beige;
+                        margin: 0 auto;
+                        margin-top: 0px;
+                        
+                    }
+                    .titulo{
+                        font-weight: bold;
+                        font-size: 18px;
+                        text-align: center;
+                        margin-bottom: 10px;
+                        color: black;
+                    }
+                    .contenido{
+                        color: black;
+                        text-align: justify;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="cuadro1">
+                    <h2 class="titulo">Articulos de consejos</h2>
+                    <p class="contenido">1.Educarse sobre las discapacidades para hacer un ajuste o adaptasiones
+                        necesarias.
+                    </p>
+                    <p class="contenido">2.Fomentar una cultura inclusiva, esto implica sensibilizar y capacitar
+                        a los empleados sobre la inclusion de personas con discapacida, fomentar la empatia y 
+                        respeto mutuo.
+                    </p>
+                    <p class="contenido">3.Establecer políticas de contratación inclusiva como reservar
+                        un porcentaje de puestos de trabajo para personas con discapacidad.
+                    </p>
+                    <p class="contenido">4. Brindar oportunidades de desarrollo y capacitacion, para que 
+                        las personas con discapacidad puedan desarrollar sus habilidades y avanzar en sus
+                        carreras
+                    </p>
+                    <style>
+                        .borderesd-image{
+                            border: 3px solid black;
+                        }
+                    </style>
+                    <dev>
+                        <img src="{% static 'img/consejo.jpg' %}" alt="La vida te pone obstaculos, los limites tu" style="width: 70%; height: auto; top: 50%;left: 50%;transform: translate(20%,-5%);" class="borderesd-image">
+                    </dev>
+                    
+                </div>
+            </body> 
 
-            <img class="img-inicio" src="{% static 'img/laboral.jpg' %}" alt="Imagen">
+            
         </div>
         <div class="mission-container">
             <div>
                 <head>
                     <title>Historia</title>
                     <style>
-                        .cuadro{
+                        .cuadro3{
                             width:380px;
-                            height: 750px;
+                            height: 800px;
                             border: 1px solid #000;
                             padding: 10px;
                             background-color:beige;
+                            margin-bottom: 20px;
                         }
                         .titulo{
                             font-weight: bold;
@@ -49,25 +105,26 @@
                     </style>
                 </head>
                 <body>
-                    <div class="cuadro">
+                    <div class="cuadro3" style="top: 0; left: 0;">
                         <h2 class="titulo">Historia</h2>
-                        <p class="contenido">1. Claudia Pacheco: reconocida periodista y presentadora de 
-                            televisión en El Salvador. A pesar de ser ciega desde los 18 años, ha 
-                            logrado destacarse en su campo.
+                        <p class="contenido">1. Claudia Martinez: reconocida cajera de 
+                            la empresa de Super Selectos. A pesar de ser ciega desde los 20 años, ha 
+                            logrado destacarse en su campo y a brindado capacitacion a nuevos empleados .
                         </p>
-                        <p class="contenido">2. Héctor Picardo: es un abogado y politico salvadoreño con
-                            discapacidd visual. Ha trabajado incansablemente en la defensa de los derechos
-                            de las personas con discapacidad y ha ocupado cargos importantes en el ambito
-                            politico
+                        <p class="contenido">2. Héctor Valle: es un empleado de Siman que trabaja en
+                            el area de atencion al cliente. A pesar de enfrentarse a muchas dificultades
+                            a logrado adaptarse a su entorno de trabajo con el apoyo de la empresa que le
+                            proporciono las adaptaciones necesarias.
                         </p>
-                        <p class="contenido">3. Fernando Llort: fue un reconocido artista salvadoreño que
-                            padecía discapacidad motriz. Su obra artística se caracterizó por su originalidad
-                            y fue reconocido a nivel nacional e internacional.
+                        <p class="contenido">3. Fernando Rivas: fue un reconocido empleado en Metrocentro que
+                            padecía discapacidad motriz. Aunque a enfrentado desafios debido a su discapacidad
+                            en Metrocentro ha encontrado un ambiente de trabajo inclusivo y comprensivo, y a 
+                            logrado destacar en su area.
                         </p>
-                        <p class="contenido">4. Raul Cea: es un reconocido escritor y poeta que ha logrado
-                            destacarse en el ambito literario a pesar de su discapacidad visual. Sus obras 
-                            literarias han recibido reconocimiento y premios tanto a nivel nacional como
-                            internacional
+                        <p class="contenido">4. Raul Huezo: es un reconocido empleado de Texaco con discapacidad 
+                            visual que trabaja en el area de administrativa como asistente, a pesar de su discapacidad 
+                            se enfoco en desarrollar habilidades auditivas, tactiles y tecnologicas para poder cumplir
+                            con su trabajo.
                         </p>
                         <style>
                             .borderesd-image{
@@ -84,9 +141,55 @@
             
             </div>
             <div>
-                <p class="bienvenida">Leyes y Politicas</p>
-                <p>Informacion acerca  de las leyes y politicas.</p>
-                <img class="img-inicio" src="{% static 'img/laboral.jpg' %}" alt="Imagen">
+                <head>
+                    <title>Leyes y politica</title>
+                    <style>
+                        .cuadro{
+                            width:380px;
+                            height: 730px;
+                            border: 1px solid #000;
+                            padding: 10px;
+                            background-color:beige;
+                            margin-bottom: 20px;
+                        }
+                        .titulo{
+                            font-weight: bold;
+                            font-size: 18px;
+                            text-align: center;
+                            margin-bottom: 10px;
+                            color: black;
+                        }
+                        .contenido{
+                            color: black;
+                            text-align: justify;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="cuadro">
+                        <h2 class="titulo">Leyes y politicas</h2>
+                        <p class="contenido">1. Ley de especial de inclusion de las personas con discapacida:
+                            reconoce a las personas con discapacidad sus derechos humanos y manda el establecimiento
+                            de las politicas publicas necesarias para su ejercicio
+                        </p>
+                        <p class="contenido">2. Ley de equiparacion: las empresas tienen deber en cumplir el articulo
+                            24 de esta ley que dice: "Todo patrono privado tiene la obligación de contratar como minimo
+                            por cada 25 trabajadores que tenga a su servicio, a una persona discapacitada y formación
+                            profesional idonea, apta para desempeñar el puesto de que se trate. Igual obligacion tendra
+                            el Estado y sus dependencias, las instituciones oficiales autónomas, las municipales, inclusive
+                            el Instituto Salavadoreño del Seguro Social y la Comisión Hidroeléctrica del Río Lempa".
+                        </p>
+                        <style>
+                            .borderesd-image{
+                                border: 3px solid black;
+                            }
+                        </style>
+                        <dev>
+                            <img src="{% static 'img/Ley.png' %}" alt="Imagen representativa de la ley" style="width: 60%; height: auto;" class="borderesd-image">
+                        </dev>
+                        
+                    </div>
+                </body>
             </div>
         </div>
         <!-- Resto del contenido -->

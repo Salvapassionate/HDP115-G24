@@ -1,0 +1,19 @@
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My App - Temaa 4</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenido al Sitio Web</h1>
+    <div class="link">
+      <a href="{% url 'login' %}">Iniciar sesion</a> o <a href="{% url 'register' %}">Registrarse</a>
+    </div>
+  </div>
+</body>
+</html>
+{% endblock %}

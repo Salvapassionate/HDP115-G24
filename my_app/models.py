@@ -2,6 +2,19 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.auth.models import AbstractUser, Group, Permission
+# Creado el models login
+
+class CustomUser(AbstractUser):
+    groups = models.ManyToManyField(Group, verbose_name='groups', blank=True, related_name='customuser_set')
+    user_permissions = models.ManyToManyField(Permission, verbose_name='user permissions', blank=True, related_name='customuser_set')
+
+
+class Administrador(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
+
+class Usuario(models.Model):
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
 # Create your models here.
 class Estadisticas(models.Model):
