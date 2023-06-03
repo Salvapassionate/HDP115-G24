@@ -53,7 +53,7 @@ def login_view(request):
                 return redirect('index')
         else:
             error_message = 'Invalid username or password.'
-            return render(request, 'index.html', {'error_message': error_message})
+            return render(request, 'login.html', {'error_message': error_message})
     else:
         return render(request, 'login.html')
 
@@ -83,6 +83,7 @@ def home(request):
     return render(request, "index.html", {"estadisticas": estadisticasListadas})
 
 def registrar_estadistica(request):
+    id = request.POST['txtID']
     nombre = request.POST['txtNombre']
     apellido = request.POST['txtApellido']
     edad = request.POST['txtEdad']
@@ -92,15 +93,16 @@ def registrar_estadistica(request):
     actividadeconomica = request.POST['txtActividadEconomica']
     categoriaocupacion = request.POST['txtCategoriaOcupacion']
 
-    estadistica = Estadisticas.objects.create(nombre=nombre, apellido=apellido, edad=edad, genero=genero, tipodiscapacidad=tipodiscapacidad, sector=sector, actividadeconomica=actividadeconomica, categoriaocupacion=categoriaocupacion)
-    return redirect('/')
+    estadistica = Estadisticas.objects.create(id=id, nombre=nombre, apellido=apellido, edad=edad, genero=genero, tipodiscapacidad=tipodiscapacidad, sector=sector, actividadeconomica=actividadeconomica, categoriaocupacion=categoriaocupacion)
+    return redirect('index')
 
-def edicion_estadistica(request, nombre):
-    estadistica = Estadisticas.objects.get(nombre=nombre)
-    return render(request, "edicionEstadistica.html", {"estadistica": estadistica})
+def edicion_estadistica(request, id):
+    estadistica = Estadisticas.objects.get(id=id)
+    return render(request, 'edicionEstadistica.html', {"estadistica": estadistica})
+
 
 def editar_estadistica(request):
-    """id = request.POST['txtId']"""
+    id = request.POST['txtID']
     nombre = request.POST['txtNombre']
     apellido = request.POST['txtApellido']
     edad = request.POST['txtEdad']
@@ -110,7 +112,8 @@ def editar_estadistica(request):
     actividadeconomica = request.POST['txtActividadEconomica']
     categoriaocupacion = request.POST['txtCategoriaOcupacion']
 
-    estadistica = Estadisticas.objects.get(nombre=nombre)
+    estadistica = Estadisticas.objects.get(id=id)
+    estadistica.nombre = nombre
     estadistica.apellido = apellido
     estadistica.edad = edad
     estadistica.genero = genero
@@ -120,12 +123,12 @@ def editar_estadistica(request):
     estadistica.categoriaocupacion = categoriaocupacion
     estadistica.save()
 
-    return redirect('/')
+    return redirect('index')
 
-def eliminar_estadistica(request, nombre):
-    estadistica = Estadisticas.objects.get(nombre=nombre)
+def eliminar_estadistica(request, id):
+    estadistica = Estadisticas.objects.get(id=id)
     estadistica.delete()
-    return redirect('/')
+    return redirect('index')
 
 def home_ubicacion(request):
     ubicacionesListadas = Ubicacion.objects.all()

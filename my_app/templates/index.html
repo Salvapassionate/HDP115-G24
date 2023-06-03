@@ -95,6 +95,10 @@
                             <div class="card-body">
                                 <form action="/registrar_estadistica/" method="POST">{% csrf_token %}
                                     <div class="form-group">
+                                        <input type="text" id="txtID" name="txtID" class="form-control"
+                                            placeholder="ID" maxlength="20" required>
+                                    </div>
+                                    <div class="form-group">
                                         <input type="text" id="txtNombre" name="txtNombre" class="form-control"
                                             placeholder="Nombre" maxlength="100" required>
                                     </div>
@@ -139,6 +143,8 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+
+                                        <th>Id</th>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
                                         <th>Edad</th>
@@ -153,6 +159,7 @@
                                 <tbody>
                                     {% for estadistica in estadisticas %}
                                     <tr>
+                                        <td>{{ estadistica.id }}</td>
                                         <td>{{ estadistica.nombre }}</td>
                                         <td>{{ estadistica.apellido }}</td>
                                         <td>{{ estadistica.edad }}</td>
@@ -161,8 +168,9 @@
                                         <td>{{ estadistica.sector }}</td>
                                         <td>{{ estadistica.actividadeconomica }}</td>
                                         <td>{{ estadistica.categoriaocupacion }}</td>
-                                        <td><a href="/edicion_estadistica/{{ estadistica.nombre }}" class="btn btn-info">Editar</a></td>
-                                        <td><a href="/eliminar_estadistica/{{ estadistica.nombre }}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                                        <td><a href="/edicion_estadistica/{{ estadistica.id }}" class="btn btn-info">Editar</a></td>
+                                        <td><a href="/eliminar_estadistica/{{ estadistica.id }}" class="btn btn-danger btnEliminacion">Eliminar</a>
+                                        </td>
                                     </tr>
                                     {% endfor %}
                                 </tbody>

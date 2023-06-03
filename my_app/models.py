@@ -31,7 +31,7 @@ class Estadisticas(models.Model):
         return self.nombre
     
     class Meta:
-        db_table = 'my_app_estadisticas'
+        db_table ='my_app_estadisticas'
 
 class Ubicacion(models.Model):
     nombreUb = models.CharField(max_length=100)
@@ -56,4 +56,4 @@ class Empresa(models.Model):
         return self.nombreE
     
     class Meta:
-        db_table = 'my_app_empresas'
+        db_table = 'empresas'

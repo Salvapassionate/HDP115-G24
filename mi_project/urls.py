@@ -27,10 +27,11 @@ urlpatterns = [
 
    
     url('^registrar_estadistica', views.registrar_estadistica),
-    url('^edicion_etadistica/<nombre>/$', views.edicion_estadistica),
+    url(r'^edicion_estadistica/(?P<id>\d+)/$', views.edicion_estadistica, name='edicion_estadistica'),
     url('^editar_estadistica', views.editar_estadistica),
-    url('^eliminar_estadistica/<nombre>/$', views.eliminar_estadistica),
+    url(r'^eliminar_estadistica/(?P<id>\d+)/$', views.eliminar_estadistica, name='eliminar_estadistica'),
 
+    
     url(r'^$', views.sistema, name='sistema'),
     url('^login/$', views.login_view, name='login'),
     url(r'^register/$', views.register, name='register'),
