@@ -91,6 +91,7 @@ table {
 /*Estilos para acerca de la empresa*/
 .empresa-info{
     justify-content:right;
+    
     display: flex;
 }
 .welcome-about{
