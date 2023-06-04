@@ -28,6 +28,7 @@ module.exports = {
                 departamento: 'San Salvador',
                 municipio: 'San Salvador',
                 coodenadaX: 13.716191,
+                coodenadaX: 13.716191,
                 coodenadaY: -89.212591
             },
         ]
