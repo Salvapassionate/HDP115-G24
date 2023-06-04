@@ -16,6 +16,10 @@ class Administrador(models.Model):
 class Usuario(models.Model):
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE)
 
+class Usuarios(models.Model):
+    nombre = models.CharField(max_length=250)
+    password = models.CharField(max_length=250)
+
 # Create your models here.
 class Estadisticas(models.Model):
     nombre = models.CharField(max_length=100)

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from .models import Estadisticas,Ubicacion,Empresa
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .models import CustomUser, Administrador, Usuario
+from .models import CustomUser, Administrador, Usuarios
 
 def mostrar_estadisticas(request):
     estadisticas = Estadisticas.objects.all()
