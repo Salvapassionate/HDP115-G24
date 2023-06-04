@@ -53,7 +53,7 @@ def login_view(request):
                 return redirect('index')
         else:
             error_message = 'Invalid username or password.'
-            return render(request, 'login.html', {'error_message': error_message})
+            return render(request, 'index.html', {'error_message': error_message})
     else:
         return render(request, 'login.html')
 
