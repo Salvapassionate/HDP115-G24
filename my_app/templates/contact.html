@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/leaflet.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Control.MiniMap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/leaflet-beautify-marker-icon.css' %}">
     <style>
         #map{
             height: 400px;
@@ -21,6 +22,7 @@
     <!-- Referencias java script -->
 <script my_app="/js/leaflet.js"></script>
 <script my_app="/js/Control.MiniMap.min.js"></script>
+<script my_app="/js/leaflet-beautify-marker-icon.js"></script>
 
     <div class="welcome-contact">
         <div>
@@ -307,45 +309,10 @@
                         attribution: 'Map data &copy; <a href="http://wwww.openstreetmap.org/">OpenStreetMap</a> contributors'
                     }).addTo(map);
     
-                    //const pines = []
-                    //y=-88;
-                    //i=0;
+                                      
+                    const pin = new L.Marker([13.705334, -89.210798]).addTo(map).bindPoup("Siman").openPoup();
                 
-                //MARCADORES DE LAS ALERTAS
-
-                const tableAlerta = document.getElementById('alertas')
-                const coordenadas = [...tableAlerta.querySelectorAll('.coordenadas')];
-                //for (a=0; a<5;a++){
-                coordenadas.forEach((coordenada) => {
-                pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map).bindPopup("<H2><i><center>"+coordenada.dataset.nombre+"</center></i></H2>  <h5><b>Los daños presentados son:</b></h5> <h6>"+coordenada.dataset.dano+"</h6><h5><b>Las medidas para mitigar daños son:</b></h5><h6> "+coordenada.dataset.medida+"</h6><h5><b>Alerta ubicada en:</b><h5><h6>" + 'Departamento: '+ coordenada.dataset.d +'<br>'+'Municipio: '+coordenada.dataset.muni + ' </h6></p> <a class="btn btn-light" href="../alerta/edit/'+coordenada.dataset.id+'">Editar</a>' + '<a class="btn btn-light" href="../alerta/activar/'+coordenada.dataset.id+'">Eliminar</a>'+ '</p>').openPopup();
-                newMarkerGroup = new L.LayerGroup();
-                map.on('click', addMarker);
-                const items = {
-                "Pines": pines[i],
-                };
-    
-                i=i+1;
-                // y=y-0.10;
-                })
-                //}
-                function addMarker(e) {
-                }
-                </script>
-    <script>
-
-        // Agregando pluggin
-        var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { minZoom: 6, maxZoom: 25 });
-    
-        //MiniMap    
-        var minimap = new L.Control.MiniMap(carto_light,
-            {
-                toggleDisplay: true,
-                minimized: false,
-                position: "bottomleft"
-            }).addTo(map);
-    
-        // Agregar escala
-        new L.control.scale({ imperial: false }).addTo(map);
+                
         
     </script>
     
