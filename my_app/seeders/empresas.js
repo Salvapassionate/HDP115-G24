@@ -196,28 +196,7 @@ module.exports = {
                 teléfonno: '2214-9115',
             },
         ]
-   
-        empresas = [
-            ...empresas,
-            {
-                id: 19,
-                nombreE:'Diparvel 29 Calle Poniente',
-                direcciónE: 'Entre 29 Calle Poniente y Avenida España',
-                correoE: 'csd.29calle@diparvel.com.sv',
-                teléfonno: '2226-1744 / 2225-0148',
-            },
-        ]
-        empresas = [
-            ...empresas,
-            {
-                id: 20,
-                nombreE:'Texaco Quezaltepeque',
-                direcciónE: 'Urb. Del Huerto Lote 12, Block F Quezaltepeque',
-                correoE: 'esacsc@chevron.com',
-                teléfonno: '2244-5540',
-            },
-        ]
-        
+                  
         await queryInterface.bulkInsert('Alerta', alerta, {})
         
     },
