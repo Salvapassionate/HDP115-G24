@@ -310,10 +310,205 @@
                     //const pines = []
                     //y=-88;
                     //i=0;
+                
+                //MARCADORES DE LAS ALERTAS
+
+                const tableAlerta = document.getElementById('alertas')
+                const coordenadas = [...tableAlerta.querySelectorAll('.coordenadas')];
+                //for (a=0; a<5;a++){
+                coordenadas.forEach((coordenada) => {
+                pines[i] = L.marker([coordenada.dataset.x, coordenada.dataset.y]).addTo(map).bindPopup("<H2><i><center>"+coordenada.dataset.nombre+"</center></i></H2>  <h5><b>Los daños presentados son:</b></h5> <h6>"+coordenada.dataset.dano+"</h6><h5><b>Las medidas para mitigar daños son:</b></h5><h6> "+coordenada.dataset.medida+"</h6><h5><b>Alerta ubicada en:</b><h5><h6>" + 'Departamento: '+ coordenada.dataset.d +'<br>'+'Municipio: '+coordenada.dataset.muni + ' </h6></p> <a class="btn btn-light" href="../alerta/edit/'+coordenada.dataset.id+'">Editar</a>' + '<a class="btn btn-light" href="../alerta/activar/'+coordenada.dataset.id+'">Eliminar</a>'+ '</p>').openPopup();
+                newMarkerGroup = new L.LayerGroup();
+                map.on('click', addMarker);
+                const items = {
+                "Pines": pines[i],
+                };
     
+                i=i+1;
+                // y=y-0.10;
+                })
+                //}
+                function addMarker(e) {
+                }
                 </script>
+    <script>
+
+        // Agregando pluggin
+        var carto_light = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', { minZoom: 6, maxZoom: 25 });
     
+        //MiniMap    
+        var minimap = new L.Control.MiniMap(carto_light,
+            {
+                toggleDisplay: true,
+                minimized: false,
+                position: "bottomleft"
+            }).addTo(map);
+    
+        // Agregar escala
+        new L.control.scale({ imperial: false }).addTo(map);
+        
+    </script>
+    
+    <script>
+        //Boton de agregar
             
+            function testF(){
+                alert('Hello world!');
+                console.log('clicked!!').addTo(map); //Id like this to show on the node.js console
+            }
+            
+    
+    </script>
+          <script>
+            const ctxPieDeparments = document.getElementById('chartPieDeparments')
+            const ctxBarDeparments = document.getElementById('chartBarDeparments')
+            const ctxLineMunicipios = document.getElementById('chartLineMunicipios')
+        
+            const dataPieDeparments = [
+                tableAlertas.querySelectorAll('.text-danger').length,
+                tableAlertas.querySelectorAll('.text-success').length,
+                tableAlertas.querySelectorAll('.text-warning').length,
+            ]
+        
+        
+            const dataBarDeparments = {
+                'Ahuachapán': 0,
+                'Cabañas': 0,
+                'Chalatenango': 0,
+                'Cuscatlán': 0,
+                'La Libertad': 0,
+                'La Paz': 0,
+                'La Unión': 0,
+                'Morazán': 0,
+                'San Miguel': 0,
+                'San Salvador': 0,
+                'San Vicente': 0,
+                'Santa Ana': 0,
+                'Sonsonate': 0,
+                'Usulután': 0,
+            }
+            const dataLineMunicipios = {}
+        
+            const departamentosConAlertasActivas = [...tableAlertas.querySelectorAll('.departamento')]
+            departamentosConAlertasActivas.forEach((departamento) => {
+                dataBarDeparments[departamento.textContent] = dataBarDeparments[departamento.textContent] + 1
+            })
+        
+            const municipiosConAlertasActivas = [...tableAlertas.querySelectorAll('.municipio')]
+            municipiosConAlertasActivas.forEach((municipio) => {
+                dataLineMunicipios[municipio.textContent] = 0
+            })
+            municipiosConAlertasActivas.forEach((municipio) => {
+                dataLineMunicipios[municipio.textContent] = dataLineMunicipios[municipio.textContent] + 1
+            })
+            new Chart(ctxPieDeparments, {
+        
+                type: 'pie',
+                data: {
+                    labels: ['Alertas Rojas', 'Alertas Verdes', 'Alertas Amarillas'],
+                    datasets: [{
+                        label: 'Cantidad de alertas',
+                        data: dataPieDeparments,
+                        backgroundColor: [
+                            'rgba(255, 99, 132)',
+                            'rgba(75, 192, 192)',
+                            'rgba(255, 206, 86)',
+                        ],
+                    }]
+                },
+            })
+        
+        
+            new Chart(ctxBarDeparments, {
+                type: 'bar',
+                data: {
+                    labels: Object.keys(dataBarDeparments),
+                    datasets: [{
+                        label: 'Departamentos',
+                        data: Object.values(dataBarDeparments),
+                        backgroundColor: [
+                            'rgb(41, 52, 98)',
+                            'rgb(28, 214, 206)',
+                            'rgb(254, 219, 57)',
+                            'rgb(214, 28, 78)',
+                            'rgb(49, 225, 247)',
+                            'rgb(216, 0, 166)',
+                            'rgb(255, 119, 119)',
+                            'rgb(4, 0, 154)',
+                            'rgb(240, 235, 204)',
+                            'rgb(227, 199, 112)',
+                            'rgb(177, 175, 255)',
+                            'rgb(200, 255, 212)',
+                            'rgb(159, 135, 114)',
+                            'rgb(204, 54, 54)',
+                        ],
+                    }]
+                },
+        
+            })
+        
+            new Chart(ctxLineMunicipios, {
+                type: 'line',
+                data: {
+                    labels: Object.keys(dataLineMunicipios),
+                    datasets: [{
+                        label: 'Municipios',
+                        data: Object.values(dataLineMunicipios),
+                        backgroundColor: ['rgb(41, 52, 98)'],
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            min: 0,
+                            suggestedMax: 20,
+                            stepSize: 1,
+                        }
+                    }
+                },
+            })
+        
+            const buttonsForDownloadChartAsPDF = [...document.querySelectorAll('.download--pdf--chart')]
+            buttonsForDownloadChartAsPDF.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const target = button.dataset.target
+                    const chartCanvas = document.getElementById(target)
+                    const canvasImage = chartCanvas.toDataURL('image/png', 1.0)
+                    let pdf = new jspdf.jsPDF('landscape')
+                    pdf.text(chartCanvas.previousElementSibling.textContent, 15, 15)
+                    pdf.addImage(canvasImage, 'PNG', 50, 30, 150, 150)
+        
+                    pdf.save('chart.pdf')
+                })
+            })
+        
+            const buttonsForDownloadChartAsXLS = [...document.querySelectorAll('.download--excel--chart')]
+            buttonsForDownloadChartAsXLS.forEach((button) => {
+                button.addEventListener('click', () => {
+                    const target = button.dataset.target
+                    const chartCanvas = document.getElementById(target)
+                    const canvasImage = chartCanvas.toDataURL('image/png', 1.0)
+        
+        
+                    console.log(canvasImage)
+        
+                    let workbook = new ExcelJS.Workbook()
+                    const sheet = workbook.addWorksheet('Grafico')
+                    var imageID = workbook.addImage({
+                        base64: canvasImage,
+                        extension: 'png',
+                        
+                    })
+                    console.log("imageID", imageID)
+                    sheet.addImage(imageID, 'B2:M28')
+        
+                    workbook.xlsx.writeBuffer().then((data) => {
+                        const blob = new Blob([data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8' });
+                        saveAs(blob, 'chart.xlsx');
+                    });
+                })
+            })
+        </script>  
         </div>
         
         <!-- Resto del contenido -->
