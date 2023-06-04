@@ -13,7 +13,8 @@ module.exports = {
             {
                 id:1, 
                 nombreUb:'Simana Metrocentro ', 
-                municipio:'San Salvador', 
+                departamento:'San Salvador', 
+                municipio: 'San Salvador',
                 coordenadaX: 'San Salvador', 
                 coodenadaY: '13.705334',
                 
@@ -24,10 +25,10 @@ module.exports = {
             {
                 id: 2,
                 nombreUb: 'Súper Selectos Centro Comercial San Luis',
+                departamento: 'San Salvador',
                 municipio: 'San Salvador',
-                coordenadaX: 'San Salvador',
-                coodenadaY: 13.716191,
-                coodenadaZ: -89.212591
+                coodenadaX: 13.716191,
+                coodenadaY: -89.212591
             },
         ]
         my_app_usuarios = [
@@ -35,10 +36,10 @@ module.exports = {
             {
                 id: 3,
                 nombreUb: 'Diparvel Escalón',
+                departamento: 'San Salvador',
                 municipio: 'San Salvador',
-                coordenadaX: 'San Salvador',
                 coodenadaY: 13.699858,
-                coodenadaZ: -89.233339
+                coodenadaX: -89.233339
             },
         ]
         my_app_usuarios = [
@@ -47,9 +48,9 @@ module.exports = {
                 id: 4,
                 nombreUb: 'Texaco La 25',
                 municipio: 'San Salvador',
-                coordenadaX: 'San Salvador',
+                departamento: 'San Salvador',
                 coodenadaY: 13.703994,
-                coodenadaZ: -89.204689
+                coodenadaX: -89.204689
             },
         ]
         my_app_usuarios = [

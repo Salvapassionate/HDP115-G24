@@ -285,25 +285,29 @@
                         </div>
                         {% endfor %}
                         {% endif %}
-                        <h2>Gestión de Empresas</h2>
+                        <h2>My_app_ubicaciones</h2>
                         <div class="card">
                             <div class="card-body">
                                 <form action="/registrar_empresa/" method="POST">{% csrf_token %}
                                     <div class="form-group">
-                                        <input type="text" id="txtNombreE" name="txtNombreE" class="form-control"
-                                            placeholder="Nombre" maxlength="100" required>
+                                        <input type="text" id="txtId" name="txtId" class="form-control"
+                                            placeholder="Id" maxlength="100" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" id="txtDireccionE" name="txtDireccionE" class="form-control"
-                                            placeholder="Dirección" maxlength="200" required>
+                                        <input type="text" id="txtNombreUb" name="txtNombreUb" class="form-control"
+                                            placeholder="NombreUb" maxlength="200" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" id="txtCorreoE" name="txtCorreoE" class="form-control"
-                                            placeholder="Correo" maxlength="100" required>
+                                        <input type="text" id="txtMunicipio" name="txtMunicipio" class="form-control"
+                                            placeholder="Municipio" maxlength="100" required>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" id="txtTelefonoE" name="txtTelefonoE" class="form-control"
-                                            placeholder="Teléfono" maxlength="20" required>
+                                        <input type="text" id="txtCoordenadaX" name="txtCoordenadaX" class="form-control"
+                                            placeholder="CoordenadaX" maxlength="20" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="txtCoordenadaY" name="txtCoordenadaY" class="form-control"
+                                            placeholder="CoordenadaY" maxlength="20" required>
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success btn-block text-white">Guardar</button>
@@ -313,27 +317,40 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-8 col-xl-8">
-                        <h1>Contacto Empresas</h1>
+                        <h1>Ubicaciones</h1>
                         <div class="table-responsive py-2">
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Nombre</th>
-                                        <th>Dirección</th>
-                                        <th>Correo</th>
-                                        <th>Teléfono</th>
-                                        <th colspan="2">Opciones</th>
+                                        <th>Id</th>
+                                        <th>NombreUb</th>
+                                        <th>Municipio</th>
+                                        <th>CoordenadaX</th>
+                                        <th>CoordenadaY</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Siman Metrocentro</td>
+                                        <td>San Salvador</td>
+                                        <td>13.705334</td>
+                                        <td></td>                                    
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>Súper Selectos Centro Comercial San Luis</td>
+                                        <td>San Salvador</td>
+                                        <td>San Salvador</td>
+                                        <td>13.716191</td>                                    
+                                    </tr>
                                     {% for empresa in empresas %}
                                     <tr>
-                                        <td>{{ empresa.nombreE }}</td>
-                                        <td>{{ empresa.direcciónE }}</td>
-                                        <td>{{ empresa.correoE }}</td>
-                                        <td>{{ empresa.teléfonoE }}</td>
-                                        <td><a href="/edicion_empresa/{{ empresa.nombreE }}" class="btn btn-info">Editar</a></td>
-                                        <td><a href="/eliminar_empresa/{{ empresa.nombreE }}" class="btn btn-danger btnEliminacion">Eliminar</a></td>
+                                        <td>{{My_app_ubicaciones.id}}</td>
+                                        <td>{{My_app_ubicaciones.NombreUb}}</td>
+                                        <td>{{My_app_ubicaciones.municipio}}</td>
+                                        <td>{{My_app_ubicaciones.CoordenadaX}}</td>
+                                        <td>{{My_app_ubicaciones.CoordenadaY}}</td>
                                     </tr>
                                     
                                     {% endfor %}
