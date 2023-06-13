@@ -6,21 +6,22 @@
     <title>Contacto</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/leaflet.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/Control.MiniMap.min.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/leaflet-beautify-marker-icon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/leaflet-beautify-marker-icon.css' %}">
+
     <style>
         #map{
             height: 400px;
             width: 100%;
         }
     </style>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.css" />
+    
 </head>
 <body>
 
     <!-- Referencias java script -->
-<script my_app="/js/leaflet.js"></script>
+<script my_app="https://unpkg.com/leaflet/dist/leaflet.js" ></script>
 <script my_app="/js/Control.MiniMap.min.js"></script>
 <script my_app="/js/leaflet-beautify-marker-icon.js"></script>
 
@@ -383,46 +384,38 @@
                         minZoom: 5,
                         attribution: 'Map data &copy; <a href="http://wwww.openstreetmap.org/">OpenStreetMap</a> contributors'
                     }).addTo(map);
-    
-                                      
-                    const pin = new L.Marker([13.705334, -89.210798]).addTo(map).bindPoup("Siman").openPoup();
 
-                    const pin2 = new L.Marker([13.716191, -89.212591]).addTo(map).bindPopup("Súper Selectos Centro Comercial San Luis").openPopup();
-              
-                    const pin3 = new L.Marker([13.699858, -89.233339]).addTo(map).bindPopup("Diparvel Escalón").openPopup();
-                    // Dato 4
-                   
-                    const pin4 = new L.Marker([13.703994, -89.204689]).addTo(map).bindPopup("Texaco La 25").openPopup();
-               
-                    const pin5 = new L.Marker([13.701678, -89.230029]).addTo(map).bindPopup("Siman Galerías").openPopup();
-   
-                    const pin6 = new L.Marker([13.960177, -89.183403]).addTo(map).bindPopup("Súper Selectos Aguilares").openPopup();
-                  
-                    const pin7 = new L.Marker([13.678266, -89.256385]).addTo(map).bindPopup("Diparvel Pedregal").openPopup();
+                    const pines = []
+                    //y=-88;
+                    i=0;
 
-                    const pin8 = new L.Marker([13.707750, -89.204821]).addTo(map).bindPopup("Texaco Centroamerica").openPopup();
-                  
-                    const pin9 = new L.Marker([13.677944, -89.252997]).addTo(map).bindPopup("Siman La Gran Vía").openPopup();
+                    pines[i] = L.marker([13.705334, -89.210798]).addTo(map).bindPopup("<h5><b>Siman Metrocentro</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.716191, -89.212591]).addTo(map).bindPopup("<h5><b>Súper Selectos Centro Comercial San Luis</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.699858, -89.233339]).addTo(map).bindPopup("<h5><b>Diparvel Escalón</b></h5><h6>").openPopup();    
+                    pines[i] = L.marker([13.703994, -89.204689]).addTo(map).bindPopup("<h5><b>Texaco La 25</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.701678, -89.230029]).addTo(map).bindPopup("<h5><b>Siman Galerías</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.960177, -89.183403]).addTo(map).bindPopup("<h5><b>Súper Selectos Aguilares</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.678266, -89.256385]).addTo(map).bindPopup("<h5><b>Diparvel Pedregal</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.707750, -89.204821]).addTo(map).bindPopup("<h5><b>Texaco Centroamerica</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.677944, -89.252997]).addTo(map).bindPopup("<h5><b>Siman La Gran Vía</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.924510, -89.843417]).addTo(map).bindPopup("<h5><b>Super Selectos Ahuachapán</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.699836, -89.233324]).addTo(map).bindPopup("<h5><b>Diparvel Venezuela</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.665812, -89.264347]).addTo(map).bindPopup("<h5><b>Texaco Santa Elena</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.698900, -89.152328]).addTo(map).bindPopup("<h5><b>Siman Plaza Mundo</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.794251, -89.177950]).addTo(map).bindPopup("<h5><b>Super Selectos Apopa Pericentro</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.694566, -89.205438]).addTo(map).bindPopup("<h5><b>Divarpel 27 avenida sur</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.700741, -89.225104]).addTo(map).bindPopup("<h5><b>Texaco Caribe</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.976942, -89.561220]).addTo(map).bindPopup("<h5><b>Siman Santa Ana</b></h5><h6>").openPopup();
+                    pines[i] = L.marker([13.791434, -89.174108]).addTo(map).bindPopup("<h5><b>Super Selectos Apopa Periplaza</b></h5><h6>").openPopup();                       
+                    newMarkerGroup = new L.LayerGroup();
+                    map.on('click', addMarker);
+                    const items = {
+                        "Pines": pines[i],
+                    };
                     
-                    const pin10 = new L.Marker([13.924510, -89.843417]).addTo(map).bindPopup("Super Selectos Ahuachapán").openPopup();
-                  
-                    const pin11 = new L.Marker([13.699836, -89.233324]).addTo(map).bindPopup("Diparvel Venezuela").openPopup();
-                  
-                    const pin12 = new L.Marker([13.665812, -89.264347]).addTo(map).bindPopup("Texaco Santa Elena").openPopup();
-                 
-                    const pin13 = new L.Marker([13.698900, -89.152328]).addTo(map).bindPopup("Siman Plaza Mundo").openPopup();
+                    i=i+1;
+                // y=y-0.10;                                                                                                    
                    
-                    const pin14 = new L.Marker([13.794251, -89.177950]).addTo(map).bindPopup("Super Selectos Apopa Pericentro").openPopup();
-                  
-                    const pin15 = new L.Marker([13.694566, -89.205438]).addTo(map).bindPopup("Divarpel 27 avenida sur").openPopup();
-                    
-                    const pin16 = new L.Marker([13.700741, -89.225104]).addTo(map).bindPopup("Texaco Caribe").openPopup();
-                   
-                    const pin17 = new L.Marker([13.976942, -89.561220]).addTo(map).bindPopup("Siman Santa Ana").openPopup();
-              
-                    const pin18 = new L.Marker([13.791434, -89.174108]).addTo(map).bindPopup("Super Selectos Apopa Periplaza").openPopup();
-
-        
     </script>
     
     <script>
